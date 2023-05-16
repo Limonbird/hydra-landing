@@ -6,8 +6,9 @@ const csso = require("gulp-csso");
 const gcmq = require("gulp-group-css-media-queries");
 const gulpif = require("gulp-if");
 const htmlmin = require("gulp-htmlmin");
-// const imagemin = require("gulp-imagemin");
+const imagemin = require("gulp-imagemin");
 const sass = require("gulp-sass")(require("sass"));
+const svgSprite = require("gulp-svg-sprite");
 // const terser = require('gulp-terser');
 
 let isProd = false;
@@ -45,6 +46,26 @@ const buildStyles = () => {
     .pipe(dest("dist"));
 };
 
+const buildSprite = () => {
+  return src("src/assets/images/sprite-icons/*.svg")
+    .pipe(
+      imagemin([
+        imagemin.svgo({
+          plugins: [{ removeXMLNS: true }],
+        }),
+      ])
+    )
+    .pipe(
+      svgSprite({
+        mode: {
+          symbol: true,
+        },
+      })
+    )
+    .pipe(concat("sprite.svg"))
+    .pipe(dest("dist/assets/images"));
+};
+
 // const buildScripts = () => {
 //   return src('src/index.js')
 //     .pipe(
@@ -59,13 +80,14 @@ const buildStyles = () => {
 //     .pipe(dest('dist'));
 // };
 
-// const buildImages = () => {
-//   return src(['src/assets/favicons/*', 'src/assets/images/**/*'], {
-//     base: 'src/assets',
-//   })
-//     .pipe(gulpif(isProd, imagemin([imagemin.mozjpeg({ quality: 95 })])))
-//     .pipe(dest('dist/assets'));
-// };
+const buildImages = () => {
+  return src(["src/assets/favicons/*", "src/assets/images/**/*"], {
+    ignore: "src/assets/images/sprite-icons/**",
+    base: "src/assets",
+  })
+    .pipe(gulpif(isProd, imagemin([imagemin.mozjpeg({ quality: 95 }), imagemin.svgo()])))
+    .pipe(dest("dist/assets"));
+};
 
 // const copyAssetFiles = () => {
 //   return src(['src/assets/fonts/*', 'src/assets/icons.svg'], {
@@ -73,13 +95,18 @@ const buildStyles = () => {
 //   }).pipe(dest('dist/assets'));
 // };
 
-const mainTasks = parallel(buildHtml, buildStyles);
-// const mainTasks = parallel(buildHtml, buildStyles, buildImages, copyAssetFiles, buildScripts);
+const mainTasks = parallel(buildHtml, buildStyles, buildSprite, buildImages);
+// const mainTasks = parallel(buildHtml, buildStyles, buildSprite, buildImages, copyAssetFiles, buildScripts);
 
 const watchTask = () => {
   watch("src/index.html", buildHtml);
   watch("src/scss/**/*.scss", buildStyles);
-  // watch(['src/assets/favicons/*', 'src/assets/images/**/*'], buildImages);
+  watch("src/assets/images/sprite-icons/*.svg", buildSprite);
+  watch(
+    ["src/assets/favicons/*", "src/assets/images/**/*"],
+    { ignored: "src/assets/images/sprite-icons/**" },
+    buildImages
+  );
   // watch(['src/assets/fonts/*', 'src/assets/icons.svg'], copyAssetFiles);
   // watch('src/index.js', buildScripts);
 };

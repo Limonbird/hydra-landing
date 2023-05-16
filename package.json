@@ -18,7 +18,9 @@
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^5.1.0",
+    "gulp-svg-sprite": "^2.0.3",
     "sass": "^1.62.1"
   },
   "browserslist": [

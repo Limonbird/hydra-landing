@@ -1,0 +1,23 @@
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+
+  &__logo {
+    align-items: center;
+    display: flex;
+  }
+
+  &__image {
+    & + & {
+      margin-left: 15px;
+    }
+  }
+
+  &__list {
+    @include list-unstyled;
+  }
+
+  &__action {
+    @include list-unstyled;
+  }
+}
