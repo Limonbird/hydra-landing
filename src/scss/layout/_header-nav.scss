@@ -18,9 +18,16 @@
 
   &__link {
     text-transform: uppercase;
+    font-size: 12px; // @TODO: vars
+    font-weight: bold;
 
-    &:hover {
+    &:hover,
+    &:focus {
       @include blur;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 
