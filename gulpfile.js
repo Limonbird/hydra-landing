@@ -3,12 +3,14 @@ const autoprefixer = require("gulp-autoprefixer"); // настройка browser
 const clean = require("gulp-clean");
 const concat = require("gulp-concat");
 const csso = require("gulp-csso");
+const fonter = require("gulp-fonter");
 const gcmq = require("gulp-group-css-media-queries");
 const gulpif = require("gulp-if");
 const htmlmin = require("gulp-htmlmin");
 const imagemin = require("gulp-imagemin");
 const sass = require("gulp-sass")(require("sass"));
 const svgSprite = require("gulp-svg-sprite");
+const ttf2woff2 = require("gulp-ttf2woff2");
 // const terser = require('gulp-terser');
 
 let isProd = false;
@@ -34,6 +36,13 @@ const buildHtml = () => {
       )
     )
     .pipe(dest("dist"));
+};
+
+const buildFonts = () => {
+  return src("src/assets/fonts/**/*")
+    .pipe(fonter({ formats: ["woff", "ttf"] }))
+    .pipe(ttf2woff2())
+    .pipe(dest("dist/assets/fonts"));
 };
 
 const buildStyles = () => {
@@ -81,7 +90,8 @@ const buildSprite = () => {
 // };
 
 const buildImages = () => {
-  return src(["src/assets/favicons/*", "src/assets/images/**/*"], {
+  // @TODO: добавить плагин gulp-newer для кэша, чтобы при добавлении картинки существующие файлы не обрабатывались заново
+  return src(["src/assets/favicons/**/*", "src/assets/images/**/*"], {
     ignore: "src/assets/images/sprite-icons/**",
     base: "src/assets",
   })
@@ -95,8 +105,8 @@ const buildImages = () => {
 //   }).pipe(dest('dist/assets'));
 // };
 
-const mainTasks = parallel(buildHtml, buildStyles, buildSprite, buildImages);
-// const mainTasks = parallel(buildHtml, buildStyles, buildSprite, buildImages, copyAssetFiles, buildScripts);
+const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages);
+// const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages, copyAssetFiles, buildScripts);
 
 const watchTask = () => {
   watch("src/index.html", buildHtml);
@@ -104,7 +114,7 @@ const watchTask = () => {
   watch("src/assets/images/sprite-icons/*.svg", buildSprite);
   watch(
     ["src/assets/favicons/*", "src/assets/images/**/*"],
-    { ignored: "src/assets/images/sprite-icons/**" },
+    { ignored: "src/assets/images/sprite-icons/**/*" },
     buildImages
   );
   // watch(['src/assets/fonts/*', 'src/assets/icons.svg'], copyAssetFiles);

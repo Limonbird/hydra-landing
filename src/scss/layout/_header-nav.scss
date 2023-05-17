@@ -1,23 +1,33 @@
 .header-nav {
+  align-items: center;
   display: flex;
   justify-content: space-between;
 
   &__logo {
     align-items: center;
     display: flex;
-  }
-
-  &__image {
-    & + & {
-      margin-left: 15px;
-    }
+    gap: 15px;
   }
 
   &__list {
     @include list-unstyled;
+    display: flex;
+    gap: 41px;
+    margin-left: 205px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+
+    &:hover {
+      @include blur;
+    }
   }
 
   &__action {
     @include list-unstyled;
+    display: flex;
+    margin-left: auto;
+    gap: 38px;
   }
 }

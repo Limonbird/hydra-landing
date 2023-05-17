@@ -1,4 +1,19 @@
+@mixin font-face($font-family, $name, $weight) {
+  @font-face {
+    font-family: "#{$font-family}";
+    src: local("#{$font-family}") url("./assets/fonts/#{$name}.woff2") format("woff2"),
+      url("./assets/fonts/#{$name}.woff") format("woff");
+    font-weight: #{$weight};
+    font-display: swap;
+  }
+}
+
 @mixin list-unstyled {
   list-style: none;
   padding: 0;
+}
+
+@mixin blur {
+  color: $white;
+  text-shadow: 0 0 7px #c0b7e8, 0 0 10px #c0b7e8, 0 0 21px #c0b7e8, 0 0 42px #8176af;
 }
