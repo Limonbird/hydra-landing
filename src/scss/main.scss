@@ -8,8 +8,12 @@
 
 // layout
 @import "layout/site";
+@import "layout/header";
 @import "layout/header-nav";
 
 // components
 @import "components/container";
 @import "components/button";
+
+// page
+@import "page/hero";
