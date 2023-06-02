@@ -18,12 +18,12 @@
 
   &__link {
     text-transform: uppercase;
-    font-size: 12px; // @TODO: vars
+    font-size: $font-size-sm;
     font-weight: bold;
 
     &:hover,
     &:focus {
-      @include blur;
+      @include text-highlight;
     }
 
     &:focus {

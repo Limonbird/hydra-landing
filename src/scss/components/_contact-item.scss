@@ -1,0 +1,55 @@
+.contact-item {
+  padding: 26px 0 31px;
+  position: relative;
+
+  & + & {
+    border-left: 1px solid rgba(192, 183, 232, 0.33);
+    padding-left: 51px;
+  }
+
+  &__body {
+    align-items: center;
+    display: flex;
+
+    &:hover {
+      @include text-highlight;
+      color: inherit;
+    }
+  }
+
+  &__icon {
+    .contact-item__body:hover & {
+      filter: drop-shadow(0 0 7px $purple) drop-shadow(0 0 10px $purple) drop-shadow(0 0 21px $purple)
+        drop-shadow(0 0 42px $purple-medium);
+    }
+  }
+
+  &__content {
+    .contact-item--location & {
+      margin-left: 15px;
+    }
+
+    .contact-item--phone & {
+      margin-left: 36px;
+    }
+
+    .contact-item--email & {
+      margin-left: 31px;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 10px;
+  }
+
+  &--phone {
+    margin-left: -26px;
+  }
+}

@@ -21,10 +21,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 200ms ease; // @TODO: vars
+  transition: color $base-transition;
 
   &:hover {
-    color: #c0b7e8;
+    color: $purple;
     text-decoration: none;
   }
 }

@@ -1,24 +1,24 @@
 .button {
-  background: linear-gradient(90deg, #8176af 0%, #c0b7e8 100%); // @TODO: vars
+  background: linear-gradient(90deg, $purple-medium 0%, $purple 100%);
   border-radius: 40px; // @TODO: vars
   border: none;
-  color: #343045; // @TODO: vars
+  color: $purple-dark;
   cursor: pointer;
   display: inline-block;
-  font-size: 12px; // @TODO: vars
+  font-size: $font-size-sm;
   font-weight: bold;
   padding: 17px 37px;
   text-align: center;
   text-transform: uppercase;
-  transition: 250ms ease; // @TODO: vars
+  transition: $base-transition;
 
   &:hover {
-    box-shadow: 0 0 7px #c0b7e8, 0 0 10px #c0b7e8, 0 0 21px #c0b7e8, 0 0 42px #8176af; // @TODO: vars
-    color: #343045; // @TODO: vars
+    box-shadow: 0 0 7px $purple, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium;
+    color: $purple-dark;
   }
 
   &:focus {
-    box-shadow: 0 0 7px $white, 0 0 10px #c0b7e8, 0 0 21px #c0b7e8, 0 0 42px #8176af; // @TODO: vars
+    box-shadow: 0 0 7px $white, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium;
     outline: none;
   }
 

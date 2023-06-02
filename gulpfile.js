@@ -48,7 +48,7 @@ const buildFonts = () => {
 const buildStyles = () => {
   return src("src/scss/main.scss")
     .pipe(sass())
-    .pipe(gulpif(isProd, autoprefixer()))
+    .pipe(autoprefixer())
     .pipe(gulpif(isProd, gcmq()))
     .pipe(gulpif(isProd, csso()))
     .pipe(concat("style.css"))
