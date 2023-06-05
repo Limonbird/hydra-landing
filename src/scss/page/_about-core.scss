@@ -1,0 +1,44 @@
+.about-core {
+  column-gap: 110px;
+  display: grid;
+  grid-template-columns: 532px auto;
+
+  &__picture {
+    position: relative;
+
+    &::after {
+      background: url("./assets/images/bg/about-waves.svg") no-repeat center;
+      content: "";
+      height: 504px;
+      left: -83px;
+      position: absolute;
+      top: 13px;
+      width: 1440px;
+      z-index: -1;
+    }
+  }
+
+  &__image {
+    @include image;
+  }
+
+  &__title {
+    margin-bottom: 38px;
+    margin-top: 49px;
+  }
+
+  &__split {
+    margin-top: 5px;
+  }
+
+  &__description {
+    line-height: 1.63;
+    margin-bottom: 0;
+  }
+
+  &__button {
+    margin-top: 24px;
+    min-width: 214px;
+    padding-left: 39px;
+  }
+}

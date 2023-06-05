@@ -1,0 +1,23 @@
+.about-intro {
+  align-items: center;
+  display: flex;
+  gap: 120px;
+
+  &__title {
+    display: flex;
+  }
+
+  &__split {
+    margin-top: 10px;
+  }
+
+  &__icon {
+    left: -17px;
+    position: relative;
+    top: 61px;
+  }
+
+  &__description {
+    line-height: 1.6;
+  }
+}

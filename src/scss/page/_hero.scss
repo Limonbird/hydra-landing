@@ -25,8 +25,9 @@
   }
 
   &__subtitle {
-    line-height: 1.6;
+    line-height: 1.6; // @TODO: проверить lh, не совпадает с фигмой, подбиваю вручную
     margin-bottom: 61px;
+    max-width: 450px;
   }
 
   &__picture {
@@ -75,7 +76,7 @@
     border-radius: 90px;
     display: flex;
     justify-content: space-between;
-    margin-top: 84px;
+    margin-top: 90px;
     padding: 23px 80px 24px 54px;
   }
 }

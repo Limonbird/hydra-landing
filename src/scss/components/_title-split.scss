@@ -1,0 +1,14 @@
+.title-split {
+  font-size: 36px;
+  text-transform: uppercase;
+
+  &__top {
+    display: block;
+    font-weight: $font-weight-bold;
+  }
+
+  &__bottom {
+    display: block;
+    font-weight: $font-weight-light;
+  }
+}
