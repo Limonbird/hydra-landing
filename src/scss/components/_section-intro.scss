@@ -1,20 +1,21 @@
-.about-intro {
+.section-intro {
   align-items: center;
-  display: flex;
-  gap: 120px;
+  column-gap: 120px;
+  display: grid;
+  grid-template-columns: 1fr 652px;
 
   &__title {
     display: flex;
-  }
-
-  &__split {
-    margin-top: 10px;
   }
 
   &__icon {
     left: -17px;
     position: relative;
     top: 61px;
+
+    .section-intro--services & {
+      left: 18px;
+    }
   }
 
   &__description {

@@ -1,0 +1,44 @@
+.service-card {
+  background: radial-gradient(50% 50% at 50% 50%, #433d60 0%, #211e2e 100%); // @TODO: vars
+  border-radius: 40px;
+  padding: 23px 25px 40px;
+  text-align: center;
+
+  &__image {
+    @include image;
+    border-radius: 50%;
+    border: 15px solid rgba(14, 14, 14, 0.32); // @TODO: vars
+    box-sizing: content-box;
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin-bottom: 0;
+    margin-top: 19px;
+    padding-bottom: 17.5px;
+    position: relative;
+    text-transform: uppercase; // @TODO: у всех заголовков?
+
+    &::after {
+      background-color: rgba(192, 183, 232, 0.33); // @TODO: vars
+      bottom: 0;
+      content: "";
+      height: 1px;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 154px;
+    }
+  }
+
+  &__description {
+    margin-top: 21.5px;
+    font-size: $font-size-sm;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  &__button {
+    margin-top: 33px;
+  }
+}

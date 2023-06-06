@@ -1,5 +1,7 @@
 .title-split {
   font-size: 36px;
+  margin-bottom: 0;
+  margin-top: 0;
   text-transform: uppercase;
 
   &__top {
@@ -10,5 +12,10 @@
   &__bottom {
     display: block;
     font-weight: $font-weight-light;
+    margin-top: 5px;
+
+    .title-split--15 & {
+      margin-top: 15px;
+    }
   }
 }

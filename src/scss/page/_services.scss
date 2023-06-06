@@ -1,0 +1,21 @@
+.services {
+  &__list {
+    @include list-unstyled;
+    column-gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 88px;
+    position: relative;
+
+    &::after {
+      background: url("./assets/images/bg/services-waves.svg") no-repeat center;
+      content: "";
+      height: 820px;
+      left: -84px;
+      position: absolute;
+      top: 60px;
+      width: 1440px;
+      z-index: -1;
+    }
+  }
+}
