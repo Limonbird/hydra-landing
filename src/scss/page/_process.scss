@@ -1,0 +1,51 @@
+.process {
+  &__list {
+    @include list-unstyled;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 123px;
+    position: relative;
+
+    &::after {
+      background: url("./assets/images/bg/process-waves.svg") no-repeat center;
+      content: "";
+      height: 169px;
+      left: -84px;
+      position: absolute;
+      top: -26px;
+      width: 1440px;
+      z-index: -1;
+    }
+  }
+
+  &__number {
+    align-items: center;
+    background: linear-gradient(251deg, #c0b7e8 0%, #8176af 100%); // @TODO: vars
+    border-radius: 50%;
+    color: $purple-dark;
+    display: flex;
+    font-size: 64px;
+    font-weight: $font-weight-bold;
+    height: 159px;
+    justify-content: center;
+    outline: 19px solid rgba(13, 13, 13, 0.32); // @TODO: vars
+    width: 159px;
+  }
+
+  &__step {
+    margin-top: 43px;
+    position: relative;
+  }
+
+  &__icon {
+    left: -63px;
+    position: absolute;
+    top: -16px;
+  }
+
+  &__description {
+    font-size: 24px;
+    font-weight: $font-weight-bold;
+    line-height: 1.4;
+  }
+}

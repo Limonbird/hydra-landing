@@ -1,6 +1,6 @@
 .section-intro {
   align-items: center;
-  column-gap: 120px;
+  column-gap: 95px;
   display: grid;
   grid-template-columns: 1fr 652px;
 
@@ -13,7 +13,8 @@
     position: relative;
     top: 61px;
 
-    .section-intro--services & {
+    .section-intro--services &,
+    .section-intro--process & {
       left: 18px;
     }
   }
