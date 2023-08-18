@@ -20,14 +20,11 @@
     text-transform: uppercase;
     font-size: $font-size-sm;
     font-weight: $font-weight-bold;
+    outline: none;
 
     &:hover,
     &:focus {
       @include text-highlight;
-    }
-
-    &:focus {
-      outline: none;
     }
   }
 

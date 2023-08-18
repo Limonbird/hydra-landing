@@ -22,6 +22,7 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^5.1.0",
     "gulp-svg-sprite": "^2.0.3",
+    "gulp-terser": "^2.1.0",
     "gulp-ttf2woff2": "^4.0.1",
     "sass": "^1.62.1"
   },

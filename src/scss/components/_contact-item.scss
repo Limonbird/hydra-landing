@@ -10,15 +10,18 @@
   &__body {
     align-items: center;
     display: flex;
+    outline: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
       @include text-highlight;
       color: inherit;
     }
   }
 
   &__icon {
-    .contact-item__body:hover & {
+    .contact-item__body:hover &,
+    .contact-item__body:focus & {
       filter: drop-shadow(0 0 7px $purple) drop-shadow(0 0 10px $purple) drop-shadow(0 0 21px $purple)
         drop-shadow(0 0 42px $purple-medium);
     }

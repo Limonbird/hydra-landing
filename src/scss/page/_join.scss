@@ -1,0 +1,94 @@
+.join {
+  &__form {
+    background: radial-gradient(50% 50% at 50% 50%, #403a5f 0%, #211e2e 100%);
+    border-radius: 100px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 90px 108px 84px;
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: uppercase; //@TODO: reset
+  }
+
+  &__underline {
+    margin-top: 28px;
+  }
+
+  &__subtitle {
+    font-size: 36px;
+    font-weight: $font-weight-light;
+    margin-bottom: 0; // @TODO: reset
+    margin-top: 16px;
+  }
+
+  &__body {
+    margin-top: 65px;
+  }
+
+  &__row {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+
+    & + & {
+      margin-top: 35px;
+    }
+  }
+
+  @mixin input {
+    background-color: transparent;
+    border-radius: 40px;
+    border: 2px solid #fff;
+    color: $white;
+    font-family: inherit;
+    outline: none;
+    padding: 27px 42px;
+    width: 100%;
+
+    .join__form--validated &:invalid {
+      box-shadow: 0 0 7px $pink, 0 0 10px $pink, 0 0 21px $pink, 0 0 42px $purple-medium;
+      border-color: transparent;
+    }
+
+    &::placeholder {
+      color: $white;
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: 0 0 7px $purple, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium; // @TODO: reset (focus for all controls)
+    }
+  }
+
+  &__input {
+    @include input;
+    height: 72px;
+  }
+
+  &__textarea {
+    @include input;
+    font-size: 14px; // @TODO: vars
+    resize: none;
+  }
+
+  &__footer {
+    margin-top: 51px;
+    text-align: center;
+  }
+
+  &__submit {
+    width: 214px;
+
+    &:disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+}

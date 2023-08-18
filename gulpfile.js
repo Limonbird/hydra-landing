@@ -1,4 +1,5 @@
 const { src, dest, watch, series, parallel } = require("gulp");
+
 const autoprefixer = require("gulp-autoprefixer"); // настройка browserslist находится в pagkage.json
 const clean = require("gulp-clean");
 const concat = require("gulp-concat");
@@ -10,8 +11,8 @@ const htmlmin = require("gulp-htmlmin");
 const imagemin = require("gulp-imagemin");
 const sass = require("gulp-sass")(require("sass"));
 const svgSprite = require("gulp-svg-sprite");
+const terser = require("gulp-terser");
 const ttf2woff2 = require("gulp-ttf2woff2");
-// const terser = require('gulp-terser');
 
 let isProd = false;
 
@@ -75,19 +76,19 @@ const buildSprite = () => {
     .pipe(dest("dist/assets/images"));
 };
 
-// const buildScripts = () => {
-//   return src('src/index.js')
-//     .pipe(
-//       gulpif(
-//         isProd,
-//         terser({
-//           toplevel: true,
-//         })
-//       )
-//     )
-//     .pipe(concat('index.js'))
-//     .pipe(dest('dist'));
-// };
+const buildScripts = () => {
+  return src("src/index.js")
+    .pipe(
+      gulpif(
+        isProd,
+        terser({
+          toplevel: true,
+        })
+      )
+    )
+    .pipe(concat("index.js"))
+    .pipe(dest("dist"));
+};
 
 const buildImages = () => {
   // @TODO: добавить плагин gulp-newer для кэша, чтобы при добавлении картинки существующие файлы не обрабатывались заново
@@ -99,14 +100,8 @@ const buildImages = () => {
     .pipe(dest("dist/assets"));
 };
 
-// const copyAssetFiles = () => {
-//   return src(['src/assets/fonts/*', 'src/assets/icons.svg'], {
-//     base: 'src/assets',
-//   }).pipe(dest('dist/assets'));
-// };
-
-const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages);
-// const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages, copyAssetFiles, buildScripts);
+const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages, buildScripts);
+// const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages, buildScripts);
 
 const watchTask = () => {
   watch("src/index.html", buildHtml);
@@ -117,8 +112,7 @@ const watchTask = () => {
     { ignored: "src/assets/images/sprite-icons/**/*" },
     buildImages
   );
-  // watch(['src/assets/fonts/*', 'src/assets/icons.svg'], copyAssetFiles);
-  // watch('src/index.js', buildScripts);
+  watch("src/index.js", buildScripts);
 };
 
 exports.default = series(mainTasks, watchTask);

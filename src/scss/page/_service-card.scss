@@ -2,7 +2,6 @@
   background: radial-gradient(50% 50% at 50% 50%, #433d60 0%, #211e2e 100%); // @TODO: vars
   border-radius: 40px;
   padding: 23px 25px 40px;
-  text-align: center;
 
   &__image {
     @include image;
@@ -17,7 +16,8 @@
     margin-top: 19px;
     padding-bottom: 17.5px;
     position: relative;
-    text-transform: uppercase; // @TODO: у всех заголовков?
+    text-align: center;
+    text-transform: uppercase; // @TODO: reset
 
     &::after {
       background-color: rgba(192, 183, 232, 0.33); // @TODO: vars
@@ -39,6 +39,8 @@
   }
 
   &__button {
-    margin-top: 33px;
+    display: block;
+    margin: 33px auto 0;
+    width: 154px;
   }
 }

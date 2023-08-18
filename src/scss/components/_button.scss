@@ -1,25 +1,26 @@
 .button {
   background: linear-gradient(90deg, $purple-medium 0%, $purple 100%);
-  border-radius: 40px; // @TODO: vars
+  border-radius: 40px; // @TODO: vars / reset
   border: none;
   color: $purple-dark;
   cursor: pointer;
   display: inline-block;
+  font-family: inherit; // @TODO: reset
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
+  outline: none;
   padding: 17px 37px;
   text-align: center;
   text-transform: uppercase;
   transition: $base-transition;
 
   &:hover {
-    box-shadow: 0 0 7px $purple, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium;
+    box-shadow: 0 0 7px $purple, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium; // @TODO: vars
     color: $purple-dark;
   }
 
   &:focus {
-    box-shadow: 0 0 7px $white, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium;
-    outline: none;
+    box-shadow: 0 0 7px $purple, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium;
   }
 
   &--blank {
@@ -31,6 +32,10 @@
 
     &:hover {
       color: $white;
+    }
+
+    &:focus {
+      outline-color: transparent;
     }
   }
 }
