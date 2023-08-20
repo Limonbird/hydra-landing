@@ -1,32 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
   const joinForm = document.querySelector(".join__form");
   const joinFormSubmitButton = joinForm.querySelector(".join__submit");
-  const inputList = joinForm.querySelectorAll("input");
-  const textareaList = joinForm.querySelectorAll("textarea");
-  const formElementList = [...inputList, ...textareaList];
 
-  const hasErrors = (elementList) => {
-    return elementList.some((element) => {
-      return !element.validity.valid;
-    });
+  const isFormValid = (form) => {
+    return form.checkValidity();
   };
 
-  formElementList.forEach((element) => {
-    element.addEventListener("change", () => {
-      const isFormValid = !hasErrors(formElementList);
-
-      if (isFormValid) {
-        joinFormSubmitButton.disabled = false;
-      }
-    });
+  joinFormSubmitButton.addEventListener("click", () => {
+    joinForm.classList.add("join__form--validated");
+    const isValid = isFormValid(joinForm);
+    joinFormSubmitButton.disabled = !isValid;
   });
 
-  joinFormSubmitButton.addEventListener("click", () => {
-    const isFormValid = !hasErrors(formElementList);
+  joinForm.addEventListener("input", () => {
+    const isValid = isFormValid(joinForm);
 
-    if (!isFormValid) {
-      joinForm.classList.add("join__form--validated");
+    if (!isValid && joinForm.classList.contains("join__form--validated")) {
       joinFormSubmitButton.disabled = true;
+    } else {
+      joinFormSubmitButton.disabled = false;
     }
   });
 
