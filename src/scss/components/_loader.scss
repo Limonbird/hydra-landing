@@ -1,0 +1,86 @@
+// borrowed from https://codepen.io/Trinca/pen/wzNWPG and refactored
+
+.loader {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: rgba($purple-dark, 0.8);
+
+  &__bar {
+    animation: bar 1s ease infinite;
+    bottom: 0;
+    box-shadow: 0 0 0 0.1vw $white, 0 0 1vw 0 $white, inset 0 0 0.5vw 0 $white;
+    height: 4vw;
+    left: 0;
+    margin: auto;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    width: 1vw;
+
+    &--1 {
+      animation-delay: 0.33s;
+      right: 4vw;
+    }
+
+    &--2 {
+      animation-delay: 0.66s;
+      right: 0;
+    }
+
+    &--3 {
+      animation-delay: 0.99s;
+      right: -4vw;
+    }
+  }
+
+  &__square {
+    animation: 4s 0.99s ease infinite;
+    border-radius: 0%;
+    bottom: 0;
+    box-shadow: 0 0 0 0.1vw $white, 0 0 1vw 0 $white, inset 0 0 0.5vw 0 $white;
+    height: 8vw;
+    left: 0;
+    margin: auto;
+    max-height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 8vw;
+
+    &--1 {
+      animation-name: square1;
+    }
+
+    &--2 {
+      animation-name: square2;
+    }
+  }
+}
+
+@keyframes bar {
+  50% {
+    height: 2.5vw;
+    box-shadow: 0 0 0 0.1vw $pink, 0 0 1vw 0 $pink, inset 0 0 0.5vw 0 $pink;
+  }
+}
+
+@keyframes square1 {
+  // from {
+  //   transform: rotate(0deg);
+  // }
+  to {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes square2 {
+  // from {
+  //   transform: rotate(0deg);
+  // }
+  to {
+    transform: rotate(180deg);
+  }
+}

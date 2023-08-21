@@ -26,7 +26,9 @@ const cleanDist = () => {
 };
 
 const buildHtml = () => {
-  return src("src/index.html")
+  return src(["src/index.html", "src/html/*.html"], {
+    base: "src",
+  })
     .pipe(
       gulpif(
         isProd,
@@ -104,7 +106,7 @@ const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buil
 // const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages, buildScripts);
 
 const watchTask = () => {
-  watch("src/index.html", buildHtml);
+  watch(["src/index.html", "src/html/*.html"], buildHtml);
   watch("src/scss/**/*.scss", buildStyles);
   watch("src/assets/images/sprite-icons/*.svg", buildSprite);
   watch(

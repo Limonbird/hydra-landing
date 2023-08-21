@@ -6,6 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
     return form.checkValidity();
   };
 
+  const addLoader = async () => {
+    const response = await fetch("html/loader.html");
+    const html = await response.text();
+    document.body.insertAdjacentHTML("afterbegin", html);
+  };
+
+  const removeLoader = () => {
+    const loader = document.querySelector(".loader");
+    if (loader) loader.remove();
+  };
+
   joinFormSubmitButton.addEventListener("click", () => {
     joinForm.classList.add("join__form--validated");
     const isValid = isFormValid(joinForm);
@@ -25,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
   joinForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    //@TODO: добавить лоадер (код из php-формы, css найти неоновый лоадер)
     joinFormSubmitButton.disabled = true;
+    addLoader();
 
     setTimeout(() => {
       const data = new FormData(joinForm);
@@ -41,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       joinForm.reset();
       joinForm.classList.remove("join__form--validated");
       joinFormSubmitButton.disabled = false;
+      removeLoader();
     }, 2000);
   });
 });
