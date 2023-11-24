@@ -63,7 +63,16 @@ const buildSprite = () => {
     .pipe(
       imagemin([
         imagemin.svgo({
-          plugins: [{ removeXMLNS: true }],
+          plugins: [
+            {
+              removeXMLNS: true,
+            },
+            {
+              inlineStyles: {
+                onlyMatchedOnce: false,
+              },
+            },
+          ],
         }),
       ])
     )
@@ -103,7 +112,6 @@ const buildImages = () => {
 };
 
 const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages, buildScripts);
-// const mainTasks = parallel(buildHtml, buildFonts, buildStyles, buildSprite, buildImages, buildScripts);
 
 const watchTask = () => {
   watch(["src/index.html", "src/html/*.html"], buildHtml);
