@@ -1,8 +1,9 @@
 .site {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   min-height: 100%;
 
+  // @TODO: вынести: в site только стили layout, для секций сделать файл _page.scss
   &__about {
     margin-top: 72px;
   }
@@ -21,5 +22,9 @@
 
   &__join {
     margin-top: 109px;
+  }
+
+  &__footer {
+    margin-top: 127px;
   }
 }

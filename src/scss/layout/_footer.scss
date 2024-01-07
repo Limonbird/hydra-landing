@@ -1,0 +1,75 @@
+.footer {
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-bottom: 77px;
+    gap: 30px;
+  }
+
+  &__col {
+    & + & {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: -74px;
+        width: 6px;
+        height: 197px;
+        content: "";
+        background: url("./assets/images/bar.svg") no-repeat;
+      }
+    }
+  }
+
+  &__list {
+    @include list-unstyled;
+  }
+
+  &__item {
+    & + & {
+      margin-top: 23px;
+    }
+  }
+
+  &__link,
+  &__text {
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+  }
+
+  &__link {
+    outline: none;
+
+    &:hover,
+    &:focus {
+      @include text-highlight;
+    }
+  }
+
+  &__social {
+    @include list-unstyled;
+    display: flex;
+    gap: 20px;
+    margin-top: 38px;
+  }
+
+  &__icon {
+    outline: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: block;
+    transition: $base-transition;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 7px $purple, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium;
+    }
+  }
+
+  &__button {
+    margin-top: 44px;
+    min-width: 214px;
+  }
+}

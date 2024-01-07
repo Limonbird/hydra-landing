@@ -7,6 +7,14 @@
     align-items: center;
     display: flex;
     gap: 15px;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      // box-shadow: 0 0 7px $purple, 0 0 10px $purple, 0 0 21px $purple, 0 0 42px $purple-medium;
+      filter: drop-shadow(0 0 7px $purple);
+      // filter: drop-shadow(0 0 7px $purple) drop-shadow(0 0 10px $purple) drop-shadow(0 0 21px $purple) drop-shadow(0 0 42px $purple-medium);
+    }
   }
 
   &__list {

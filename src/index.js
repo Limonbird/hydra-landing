@@ -53,6 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
       joinForm.classList.remove("join__form--validated");
       joinFormSubmitButton.disabled = false;
       removeLoader();
-    }, 2000);
+    }, 3000);
   });
 });
